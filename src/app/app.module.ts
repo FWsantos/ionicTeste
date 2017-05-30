@@ -1,12 +1,14 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { BrowserModule } from '@angular/platform-browser';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { AngularFireModule, FirebaseAppConfig} from 'angularfire2';
 
-import { AboutPage } from './../pages/about/about';
-import { CustomHeaderComponent } from './../components/custom-header/custom-header.component';
-import { MenuSettingsPage } from './../pages/menu-settings/menu-settings';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { AngularFireModule, FirebaseAppConfig} from 'angularfire2';
+
+import { SignupPage } from './pages/signup/signup';
 
 const firebaseAppConfig: FirebaseAppConfig = {
     apiKey: "AIzaSyBb8_-ubqd0BMHrFDA7lUR-GBKxDLBthaY",
@@ -18,35 +20,25 @@ const firebaseAppConfig: FirebaseAppConfig = {
 
 @NgModule({
   declarations: [
-    AboutPage,
-    CustomHeaderComponent,
-    MenuSettingsPage,
     MyApp,
-    HomePage
+    HomePage,
+    SignupPage
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseAppConfig),
-    IonicModule.forRoot(MyApp, {
-      platforms: {
-        ios: {
-          menuType: 'reveal'
-        },
-        android: {
-          menuType: 'overlay'
-        },
-        windows: {
-          menuType: 'push'
-        }
-      }
-    })
+    BrowserModule,
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    AboutPage,
-    MenuSettingsPage,
     MyApp,
-    HomePage
+    HomePage,
+    SignupPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+  ]
 })
 export class AppModule {}
