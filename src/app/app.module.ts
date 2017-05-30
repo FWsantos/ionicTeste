@@ -6,6 +6,15 @@ import { CustomHeaderComponent } from './../components/custom-header/custom-head
 import { MenuSettingsPage } from './../pages/menu-settings/menu-settings';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { AngularFireModule, FirebaseAppConfig} from 'angularfire2';
+
+const firebaseAppConfig: FirebaseAppConfig = {
+    apiKey: "AIzaSyBb8_-ubqd0BMHrFDA7lUR-GBKxDLBthaY",
+    authDomain: "ionic2-firebase-chat-27459.firebaseapp.com",
+    databaseURL: "https://ionic2-firebase-chat-27459.firebaseio.com",
+    storageBucket: "ionic2-firebase-chat-27459.appspot.com",
+    messagingSenderId: "806135010123"
+};
 
 @NgModule({
   declarations: [
@@ -16,6 +25,7 @@ import { HomePage } from '../pages/home/home';
     HomePage
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseAppConfig),
     IonicModule.forRoot(MyApp, {
       platforms: {
         ios: {
