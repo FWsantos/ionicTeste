@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
 import { SignupPage } from '../pages/signup/signup';
+import { UserService } from '../providers/user/user.service';
 
 const firebaseAppConfig: FirebaseAppConfig = {
     apiKey: "AIzaSyBb8_-ubqd0BMHrFDA7lUR-GBKxDLBthaY",
@@ -38,7 +39,8 @@ const firebaseAppConfig: FirebaseAppConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserService
   ]
 })
 export class AppModule {}
