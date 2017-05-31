@@ -1,42 +1,44 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { BrowserModule } from '@angular/platform-browser';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { AngularFireModule, FirebaseAppConfig} from 'angularfire2';
 
-import { AboutPage } from './../pages/about/about';
-import { CustomHeaderComponent } from './../components/custom-header/custom-header.component';
-import { MenuSettingsPage } from './../pages/menu-settings/menu-settings';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { SignupPage } from '../pages/signup/signup';
+
+const firebaseAppConfig: FirebaseAppConfig = {
+    apiKey: "AIzaSyBb8_-ubqd0BMHrFDA7lUR-GBKxDLBthaY",
+    authDomain: "ionic2-firebase-chat-27459.firebaseapp.com",
+    databaseURL: "https://ionic2-firebase-chat-27459.firebaseio.com",
+    storageBucket: "ionic2-firebase-chat-27459.appspot.com",
+    messagingSenderId: "806135010123"
+};
+
 @NgModule({
   declarations: [
-    AboutPage,
-    CustomHeaderComponent,
-    MenuSettingsPage,
     MyApp,
-    HomePage
+    HomePage,
+    SignupPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp, {
-      platforms: {
-        ios: {
-          menuType: 'reveal'
-        },
-        android: {
-          menuType: 'overlay'
-        },
-        windows: {
-          menuType: 'push'
-        }
-      }
-    })
+    AngularFireModule.initializeApp(firebaseAppConfig),
+    BrowserModule,
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    AboutPage,
-    MenuSettingsPage,
     MyApp,
-    HomePage
+    HomePage,
+    SignupPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+  ]
 })
 export class AppModule {}
