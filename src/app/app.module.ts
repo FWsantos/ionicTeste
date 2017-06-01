@@ -4,11 +4,13 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule, FirebaseAppConfig} from 'angularfire2';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
 import { SignupPage } from '../pages/signup/signup';
+import { UserService } from '../providers/user/user.service';
 
 const firebaseAppConfig: FirebaseAppConfig = {
     apiKey: "AIzaSyBb8_-ubqd0BMHrFDA7lUR-GBKxDLBthaY",
@@ -25,6 +27,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     SignupPage
   ],
   imports: [
+    HttpModule,
     AngularFireModule.initializeApp(firebaseAppConfig),
     BrowserModule,
     IonicModule.forRoot(MyApp)
@@ -38,7 +41,8 @@ const firebaseAppConfig: FirebaseAppConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserService
   ]
 })
 export class AppModule {}
