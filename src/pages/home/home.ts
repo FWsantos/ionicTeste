@@ -5,7 +5,7 @@ import { FirebaseListObservable } form 'angularfire2';
 
 import { SignupPage } from '../signup/signup';
 import { User } from './../../models/user.model';
-import { UserService } from './../../providers/user/user.service';
+import { UserService } from './../../providers/user.service';
 
 @Component({
   selector: 'page-home',

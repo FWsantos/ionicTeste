@@ -10,7 +10,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
 import { SignupPage } from '../pages/signup/signup';
-import { UserService } from '../providers/user/user.service';
+import { UserService } from '../providers/user.service';
 
 const firebaseAppConfig: FirebaseAppConfig = {
     apiKey: "AIzaSyBb8_-ubqd0BMHrFDA7lUR-GBKxDLBthaY",

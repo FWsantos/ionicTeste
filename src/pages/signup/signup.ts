@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
-import { UserService } from './../../providers/user/user.service'
+import { UserService } from './../../providers/user.service'
 
 @Component({
 	selector: 'page-signup',
