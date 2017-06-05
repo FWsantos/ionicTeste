@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
-import { UserService } from './../../providers/user.service'
+
+import { FirebaseAuthState } from 'angularfire2';
+
+import { AuthService } from './../../providers/auth.service';
+import { UserService } from './../../providers/user.service';
+import { User } from './../../models/user.model';
 
 @Component({
 	selector: 'page-signup',
@@ -12,6 +17,7 @@ export class SignupPage {
 	signupForm: FormGroup;
 
 	constructor(
+		public authService: AuthService,
 		public formBuilder: FormBuilder,
 		public navCtrl: NavController,
 		public navParams: NavParams,
@@ -29,10 +35,21 @@ export class SignupPage {
 	}
 
 	onSubmit(): void {
-		// console.log(this.signupForm.value);
-		this.userService.create(this.signupForm.value).then(() => {
-			console.log("Usuario Cadastrado!");
-		});
-	}
 
+		let user: User = this.signupForm.value;
+
+		this.authService.createAuthUser({
+			email: user.email,
+			password: user.password
+		}).then((authState: FirebaseAuthState) => {
+			this.userService.create(this.signupForm.value).then(() => {
+				console.log("Usuario Cadastrado!");
+			});	
+		});
+
+		// console.log(this.signupForm.value);
+		// this.userService.create(this.signupForm.value).then(() => {
+		// 	console.log("Usuario Cadastrado!");
+		// });
+	}
 }
