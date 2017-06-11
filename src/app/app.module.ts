@@ -16,8 +16,8 @@ const firebaseAppConfig: FirebaseAppConfig = {
     apiKey: "AIzaSyBb8_-ubqd0BMHrFDA7lUR-GBKxDLBthaY",
     authDomain: "ionic2-firebase-chat-27459.firebaseapp.com",
     databaseURL: "https://ionic2-firebase-chat-27459.firebaseio.com",
-    storageBucket: "ionic2-firebase-chat-27459.appspot.com",
-    messagingSenderId: "806135010123"
+    storageBucket: "ionic2-firebase-chat-27459.appspot.com"
+    // messagingSenderId: "806135010123"
 };
 
 @NgModule({
