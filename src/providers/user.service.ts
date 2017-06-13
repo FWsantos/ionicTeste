@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { User } from './../../models/user.model'
+import { User } from './../../models/user.model';
 
 /*
   Generated class for the UserProvider provider.
@@ -20,7 +20,7 @@ export class UserService {
   	public af: AngularFire,
   	public http: Http
   ) {
-    this.users: this.af.database.list('/users');
+    this.users = this.af.database.list('/users');
   }
 
   create(user: User): firebase.Promise<void> {
